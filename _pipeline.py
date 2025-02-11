@@ -118,7 +118,7 @@ def model_req(payload=None):
 ### DEBUG
 ###
 
-if __name__ == "__main__":
+"""if __name__ == "__main__":
     MESSAGE = "1 + 1"
     PROMPT = MESSAGE 
     payload = create_payload(
@@ -133,4 +133,43 @@ if __name__ == "__main__":
         time_taken, response = model_req(payload=payload)
         print(response)
         if time_taken > 0:
-            print(f'Time taken: {time_taken}s')
+            print(f'Time taken: {time_taken}s')"""
+if __name__ == "__main__":
+    # Short Message
+    MESSAGE_SHORT = "1 + 1"
+    PROMPT_SHORT = MESSAGE_SHORT
+    payload_short = create_payload(
+        target="open-webui",
+        model="llama3:latest",
+        prompt=PROMPT_SHORT,
+        temperature=1.0,
+        num_ctx=100,
+        num_predict=100
+    )
+
+    if payload_short:
+        time_taken_short, response_short = model_req(payload=payload_short)
+        print("Short Message Response:", response_short)
+        if time_taken_short > 0:
+            print(f'Short Message Time taken: {time_taken_short}s')
+
+    # Long Message
+    MESSAGE_LONG = """Explain the concept of quantum entanglement in simple terms, 
+    including its implications for quantum computing and communication.  
+    Also, discuss any current research or experiments related to entanglement 
+    and its potential future applications."""  # A more complex request
+    PROMPT_LONG = MESSAGE_LONG
+    payload_long = create_payload(
+        target="open-webui",
+        model="llama3:latest",
+        prompt=PROMPT_LONG,
+        temperature=1.0,  # Or a lower temperature for more focused answers
+        num_ctx=2048,  # Increase context window if your model supports it
+        num_predict=500  # Increase prediction length, as the response will be longer
+    )
+
+    if payload_long:
+        time_taken_long, response_long = model_req(payload=payload_long)
+        print("\nLong Message Response:", response_long)  # Added a newline for clarity
+        if time_taken_long > 0:
+            print(f'Long Message Time taken: {time_taken_long}s')
