@@ -12,6 +12,8 @@ def load_config():
         "prompt-eng/_config",
         "../_config"
     ]
+
+
     
     # Find CONFIG
     config_path = None
@@ -118,6 +120,7 @@ def model_req(payload=None):
 ### DEBUG
 ###
 
+<<<<<<< HEAD
 """if __name__ == "__main__":
     MESSAGE = "1 + 1"
     PROMPT = MESSAGE 
@@ -138,6 +141,28 @@ if __name__ == "__main__":
     # Short Message
     MESSAGE_SHORT = "1 + 1"
     PROMPT_SHORT = MESSAGE_SHORT
+=======
+if __name__ == "__main__":
+    # Few-Shot Examples (Providing the model with reference answers)
+    FEW_SHOT_EXAMPLES = """
+    User: What is 2 + 2?
+    AI: 2 + 2 = 4
+
+    User: What is 5 * 6?
+    AI: 5 * 6 = 30
+
+    User: What is the capital of France?
+    AI: The capital of France is Paris.
+
+    User: {user_query}
+    AI: 
+    """
+
+    # Few-Shot for Short Message
+    MESSAGE_SHORT = "What is 1 + 1?"
+    PROMPT_SHORT = FEW_SHOT_EXAMPLES.format(user_query=MESSAGE_SHORT)
+
+>>>>>>> 2833296 (Updated _pipeline.py)
     payload_short = create_payload(
         target="open-webui",
         model="llama3:latest",
@@ -153,23 +178,58 @@ if __name__ == "__main__":
         if time_taken_short > 0:
             print(f'Short Message Time taken: {time_taken_short}s')
 
+<<<<<<< HEAD
     # Long Message
     MESSAGE_LONG = """Explain the concept of quantum entanglement in simple terms, 
     including its implications for quantum computing and communication.  
     Also, discuss any current research or experiments related to entanglement 
     and its potential future applications."""  # A more complex request
     PROMPT_LONG = MESSAGE_LONG
+=======
+    # Few-Shot for Long Message
+    MESSAGE_LONG = """Explain the concept of quantum entanglement in simple terms, 
+    including its implications for quantum computing and communication.  
+    Also, discuss any current research or experiments related to entanglement 
+    and its potential future applications."""
+
+    # Providing context for scientific explanations
+    FEW_SHOT_EXAMPLES_LONG = """
+    User: Explain Newton's First Law of Motion in simple terms.
+    AI: Newton's First Law states that an object in motion stays in motion unless acted upon by an external force. 
+        This is also known as the law of inertia.
+
+    User: How does photosynthesis work?
+    AI: Photosynthesis is the process by which plants convert sunlight into energy. 
+        They absorb sunlight through their leaves and use it to turn carbon dioxide and water into glucose and oxygen.
+
+    User: {user_query}
+    AI:
+    """
+    
+    PROMPT_LONG = FEW_SHOT_EXAMPLES_LONG.format(user_query=MESSAGE_LONG)
+
+>>>>>>> 2833296 (Updated _pipeline.py)
     payload_long = create_payload(
         target="open-webui",
         model="llama3:latest",
         prompt=PROMPT_LONG,
+<<<<<<< HEAD
         temperature=1.0,  # Or a lower temperature for more focused answers
         num_ctx=2048,  # Increase context window if your model supports it
         num_predict=500  # Increase prediction length, as the response will be longer
+=======
+        temperature=1.0,  # Adjust as needed
+        num_ctx=2048,  # Larger context window for complex topics
+        num_predict=500  # Increased prediction length for detailed answers
+>>>>>>> 2833296 (Updated _pipeline.py)
     )
 
     if payload_long:
         time_taken_long, response_long = model_req(payload=payload_long)
+<<<<<<< HEAD
         print("\nLong Message Response:", response_long)  # Added a newline for clarity
+=======
+        print("\nLong Message Response:", response_long)
+>>>>>>> 2833296 (Updated _pipeline.py)
         if time_taken_long > 0:
             print(f'Long Message Time taken: {time_taken_long}s')
