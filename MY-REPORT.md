@@ -44,9 +44,9 @@ Evaluation focuses on accuracy, completeness, and response structure in automate
 
 | Query Type       | AI Response Quality                       | Avg Processing Time |
 |------------------|-------------------------------------------|---------------------|
-| **Short Queries** | More accurate & structured                | 14.7s               |
-| **Long Queries**  | Well-explained & contextually relevant    | 15.2s               |
-| **Zero-Shot Prompting** | Less structured, more generic         |14.3s               |
+| **Short Queries** | More accurate & structured                | 7.11s               |
+| **Long Queries**  | Well-explained & contextually relevant    | 5.35s               |
+| **Zero-Shot Prompting** | Less structured, more generic         |3.95s               |
 
 **Key Finding**: Few-Shot Prompting significantly improves AI response quality, particularly for complex, long-form queries.
 
